@@ -1,0 +1,15 @@
+body{
+    margin: auto;
+    padding: auto;
+    background-color: azure;
+}
+h1{
+    text-align: center;
+}
+#marker{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 80vw;
+}
