@@ -37,19 +37,7 @@ body {
   border-radius: 0;
 }
 
-@media (min-width: 700px) {
-  .popup-fixed {
-    width: 400px;
-    height: 85% !important;
-    right: 0 !important;
-    left: auto !important;
 
-  }
-
-  .leaflet-popup-content-wrapper {
-    height: 100%;
-  }
-}
 
 .leaflet-popup-tip-container {
   display: none;
@@ -106,4 +94,99 @@ body {
 h3{
     margin-top: 2rem;
     padding-top: 1rem;
+}
+.bodyPopup{
+  display: block;
+  place-items: center;
+  width: 375px;
+  /* width: 95%; */
+  height: 79vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.tituloPopup{
+ font-size: 2rem;
+ text-align: center;
+ color: rgba(0,0,0,0.7);
+}
+.contenedorImagenPopup{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.informacionPopup{
+  display: block;
+  width: 95%;
+}
+
+.contendorBotonesPopup{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+button{
+  place-items: 1;
+  text-transform: capitalize;
+  background-color: #4B89AC;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin: 0 20px;
+  border-radius: 30px;
+  text-align: center;
+}
+button:hover{
+  border-bottom: 4px solid transparent;
+  background-color: #99DFEC;
+}
+
+@media (min-width: 700px) {
+  .popup-fixed {
+    width: 400px;
+    height: 85% !important;
+    right: 0 !important;
+    left: auto !important;
+
+  }
+
+  .leaflet-popup-content-wrapper {
+    height: 100%;
+  }
+
+  .tituloPopup{
+    font-size: 2rem;
+    text-align: center;
+    color: rgba(176, 28, 28, 0.7);
+   }
+  
+}
+
+@media (max-width: 700px) {
+  .popup-fixed {
+    width: 100%;
+    height: 85% !important;
+    right: 0 !important;
+    left: auto !important;
+
+  }
+
+  .leaflet-popup-content-wrapper {
+    height: 40%;
+  }
+
+   .bodyPopup{
+    display: block;
+    place-items: center;
+    width: 95vh;
+    /* width: 95%; */
+    height: 30vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    margin: 0 1.5rem 0 1.5rem;
+    padding: auto;
+  }
+  .t
 }
