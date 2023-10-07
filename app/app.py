@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    titulo = 'bienvenido!!'
+    titulo = 'ROMA Nodos'
     return render_template('index.html', data=titulo)
 
 

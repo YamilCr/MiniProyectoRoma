@@ -19,6 +19,70 @@ const listInst = {
     localidad: "...",
     provincia: "...",
   },
+  INIDEP: {
+    titulo: 'INIDEP',
+    imagen:
+      "https://jornadasdelmar2018.exactas.uba.ar/wp-content/uploads/2017/06/logo-inidep-completo-300x300.jpg",
+    descripcion: "description...",
+    direccion: "...",
+    localidad: "...",
+    provincia: "...",
+  },
+  CIMAS: {
+    titulo: 'CIMAS',
+    imagen:
+      "https://cimas.conicet.gov.ar/wp-content/uploads/sites/195/2023/03/CIMAS-CONICET-COMAHUE-web.png",
+    descripcion: "description...",
+    direccion: "...",
+    localidad: "...",
+    provincia: "...",
+  },
+  CESIMAR: {
+    titulo: 'CESIMAR',
+    imagen:
+      "https://cenpat.conicet.gov.ar/wp-content/uploads/sites/91/2021/01/logoCENPAT.png",
+    descripcion: "description...",
+    direccion: "...",
+    localidad: "...",
+    provincia: "...",
+  },
+  IIDEPYS: {
+    titulo: 'IIDEPyS',
+    imagen:
+      "https://lh3.googleusercontent.com/proxy/XzBXfZtFqgm2q5UA2yAk9xINnxwe6XVsZpyjJx7AiyXykpfBSiaGk331uWrzQ-djjjtcR6upTQH9IF5k6OukJFeuEOJLPf2CwWgIRBvFJlW25uKm54idfgF3dF32hm-8QkcQ33_G3c_RGkLR=s0-d",
+    descripcion: "description...",
+    direccion: "...",
+    localidad: "...",
+    provincia: "...",
+  },
+  CITSC: {
+    titulo: 'CIT - Santa Cruz',
+    imagen:
+      "https://www.unpa.edu.ar/sites/default/files/pagina_adjuntos/logo.png",
+    descripcion: "description...",
+    direccion: "...",
+    localidad: "...",
+    provincia: "...",
+  },
+  CADIC: {
+    titulo: 'CADIC',
+    imagen:
+      "https://cadic.conicet.gov.ar/wp-content/uploads/sites/19/2017/09/cadic_logo.png",
+    descripcion: "description...",
+    direccion: "...",
+    localidad: "...",
+    provincia: "...",
+  },
+  CARLINI: {
+    titulo: 'IAA BASE CARLINI',
+    imagen:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwJWsPxUNt3hZl88XsD-bNZAhmYq3kb8fvqg&usqp=CAU",
+    descripcion: "description...",
+    direccion: "...",
+    localidad: "...",
+    provincia: "...",
+  }
+
 };
 
 const map = L.map("map", config).setView([lat, lng], zoom);
@@ -28,7 +92,7 @@ var argenmap = new L.tileLayer(
   "https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{-y}.png",
   {
     minZoom: 1,
-    maxZoom: 20,
+    maxZoom: 15,
   }
 ).addTo(map);
 //L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -74,43 +138,42 @@ const points = [
   {
     lat: -34.5419214203672,
     lng: -58.4426215946441,
-    text: `
-     ${createBodyPopup(listInst.IAFE.titulo, listInst.IAFE.imagen)}`,
+    text: `${createBodyPopup(listInst.IAFE.titulo, listInst.IAFE.imagen)}`,
   },
   {
     lat: -38.0313568540783,
     lng: -57.5322375431191,
-    text: "<h3>INIDEP</h3><br>Grab the lower right corner and reduce the width of the map.",
+    text: `${createBodyPopup(listInst.INIDEP.titulo, listInst.INIDEP.imagen)}`,
   },
   {
     lat: -38.6658512007599,
     lng: -62.2343722737833,
-    text: "<h3>CIMAS</h3><br>Grab the lower right corner and reduce the width of the map.",
+    text: `${createBodyPopup(listInst.CIMAS.titulo, listInst.CIMAS.imagen)}`,
   },
   {
     lat: -42.6627066637157,
     lng: -65.004170827596,
-    text: "<h3>CESIMAR</h3><br>Grab the lower right corner and reduce the width of the map.",
+    text: `${createBodyPopup(listInst.CESIMAR.titulo, listInst.CESIMAR.imagen)}`,
   },
   {
     lat: -45.8254438633127,
     lng: -67.4633783451962,
-    text: "<h3>CIT - GOLFO SAN JORGE</h3><br>Grab the lower right corner and reduce the width of the map.",
+    text: `${createBodyPopup(listInst.IIDEPYS.titulo, listInst.IIDEPYS.imagen)}`,
   },
   {
     lat: -51.5330642603803,
     lng: -69.248236391595,
-    text: "<h3>CIT - SANTA CRUZ</h3><br>Grab the lower right corner and reduce the width of the map.",
+    text: `${createBodyPopup(listInst.CITSC.titulo, listInst.CITSC.imagen)}`,
   },
   {
     lat: -54.7426387444932,
     lng: -68.3616337812203,
-    text: "<h3>CADIC</h3><br>Grab the lower right corner and reduce the width of the map.",
+    text: `${createBodyPopup(listInst.CADIC.titulo, listInst.CADIC.imagen)}`,
   },
   {
     lat: -62.2377201064155,
     lng: -58.6670725759177,
-    text: "<h3>, IAA BASE CARLINI</h3><br>Grab the lower right corner and reduce the width of the map.",
+    text: `${createBodyPopup(listInst.CARLINI.titulo, listInst.CARLINI.imagen)}`,
   },
 ];
 
