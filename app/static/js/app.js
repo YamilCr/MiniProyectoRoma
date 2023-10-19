@@ -4,10 +4,10 @@ let config = {
   maxZoom: 15,
 };
 // magnification with which the map will start
-const zoom = 4;
+const zoom = 5;
 // co-ordinates
-const lat = -44.44;
-const lng = -68.06;
+const lat = -49.00;
+const lng = -60.00;
 
 const listInst = {
   IAFE: {
@@ -18,15 +18,21 @@ const listInst = {
     direccion: "...",
     localidad: "...",
     provincia: "...",
+    web: "https://www.argentina.gob.ar/inidep",
+    geonode: "",
+    geonetwork:"",
   },
   INIDEP: {
     titulo: 'INIDEP',
     imagen:
       "https://jornadasdelmar2018.exactas.uba.ar/wp-content/uploads/2017/06/logo-inidep-completo-300x300.jpg",
-    descripcion: "description...",
-    direccion: "...",
-    localidad: "...",
-    provincia: "...",
+    descripcion: "Instituto Nacional de Investigación y Desarrollo Pesquero. Asesoramos en el uso racional de los recursos sostenibles con el objetivo de preservar el ecosistema marino para las generaciones futuras.",
+    direccion: "Paseo Victoria Ocampo Nº1, Escollera Norte",
+    localidad: "Mar del Plata",
+    provincia: "Pcia de Buenos Aires",
+    web: "https://www.argentina.gob.ar/inidep",
+    geonode: "",
+    geonetwork:"",
   },
   CIMAS: {
     titulo: 'CIMAS',
@@ -36,6 +42,9 @@ const listInst = {
     direccion: "...",
     localidad: "...",
     provincia: "...",
+    web: "https://www.argentina.gob.ar/inidep",
+    geonode: "",
+    geonetwork:"",
   },
   CESIMAR: {
     titulo: 'CESIMAR',
@@ -45,6 +54,9 @@ const listInst = {
     direccion: "...",
     localidad: "...",
     provincia: "...",
+    web: "https://www.argentina.gob.ar/inidep",
+    geonode: "",
+    geonetwork:"",
   },
   IIDEPYS: {
     titulo: 'IIDEPyS',
@@ -54,6 +66,9 @@ const listInst = {
     direccion: "...",
     localidad: "...",
     provincia: "...",
+    web: "https://www.argentina.gob.ar/inidep",
+    geonode: "",
+    geonetwork:"",
   },
   CITSC: {
     titulo: 'CIT - Santa Cruz',
@@ -63,24 +78,33 @@ const listInst = {
     direccion: "...",
     localidad: "...",
     provincia: "...",
+    web: "https://www.argentina.gob.ar/inidep",
+    geonode: "",
+    geonetwork:"",
   },
   CADIC: {
     titulo: 'CADIC',
     imagen:
       "https://cadic.conicet.gov.ar/wp-content/uploads/sites/19/2017/09/cadic_logo.png",
-    descripcion: "description...",
-    direccion: "...",
-    localidad: "...",
-    provincia: "...",
+    descripcion: "Centro Austral de Investigaciones Científicas del Consejo Nacional de Investigaciones Científicas y Técnicas.",
+    direccion: "Bernardo Houssay 200",
+    localidad: "Ushuaia",
+    provincia: "Tierra del Fuego",
+    web: "https://cadic.conicet.gov.ar/",
+    geonode: "",
+    geonetwork:"http://roma-geonetwork.iado-conicet.gob.ar/geonetwork/srv/spa/catalog.search#/metadata/6f3c176f-00bf-494a-8a1d-1c2da32f7292",
   },
   CARLINI: {
     titulo: 'IAA BASE CARLINI',
     imagen:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwJWsPxUNt3hZl88XsD-bNZAhmYq3kb8fvqg&usqp=CAU",
-    descripcion: "description...",
-    direccion: "...",
-    localidad: "...",
-    provincia: "...",
+    descripcion: "El Instituto Antártico Argentino (IAA) es un organismo científico tecnológico, orientado bajo normas políticas del Estado nacional. Fue creado el 17 de abril de 1951 por el Decreto del Poder Ejecutivo Nacional Nº 7338. Su fundador y primer director fue el entonces Coronel Hernán Pujato. Es integrante activo del Sistema Nacional de Ciencia y Tecnología del Estado Argentino, y es pionero a nivel internacional en el desarrollo de investigación antártica.",
+    direccion: "25 de mayo 1143",
+    localidad: "San Martín",
+    provincia: "Provincia de Buenos Aires",
+    web: "https://www.cancilleria.gob.ar/es/iniciativas/dna/instituto-antartico-argentino",
+    geonode: "http://roma-geonode.iado-conicet.gob.ar/catalogue/#/dataset/1",
+    geonetwork:"http://roma-geonetwork.iado-conicet.gob.ar/geonetwork/srv/spa/catalog.search#/metadata/95a36b1c-9453-46fd-b445-111df068de42",
   }
 
 };
@@ -95,41 +119,30 @@ var argenmap = new L.tileLayer(
     maxZoom: 15,
   }
 ).addTo(map);
-//L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-// attribution:
-// '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-//}).addTo(map);
 
 var pane = map.createPane("fixed", document.getElementById("map"));
 
 // Coordenadas de los puertos
-const createBodyPopup = (titulo,
-  image,
-  descripcion,
-  direccion,
-  localidad,
-  provincia
-) => {
+const createBodyPopup = (nodo) => {
   return `<div class="bodyPopup">
-<h1 class="tituloPopup">${titulo}</h1>
+<h1 class="tituloPopup">${nodo.titulo}</h1>
 <div class="contenedorImagenPopup">
-    <img src="${image}" alt="" class="imagePopup">
+    <img src="${nodo.imagen}" alt="" class="imagePopup">
 </div>
 <p class="informacionPopup">
 <br><b>Descripción</b><br>
-Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod, eum odio. Porro blanditiis tempore laudantium autem reiciendis magnam. Ipsum perferendis nobis veniam! Alias, laborum officia. Perferendis eum exercitationem necessitatibus officiis?
-${descripcion}<br>
+${nodo.descripcion}<br>
  <b>Dirección</b><br>
- ${direccion} <br><br>
+ ${nodo.direccion} <br><br>
  <b>Localidad</b><br>
- ${localidad} <br><br>
+ ${nodo.localidad} <br><br>
  <b>Provincia</b><br>
- ${provincia}<br>
+ ${nodo.provincia}<br>
 </p>
 <div class="contendorBotonesPopup">
-<button type="button" id="btnVer">Ver</button>
-<button type="button" id="btnMapas">Mapas</button>
-<button type="button" id="btnDatos">Datos</button>
+<a href="${nodo.web}"><button type="button" id="btnVer">Web</button></a>
+<a href="${nodo.geonode}"><button type="button" id="btnMapas">Geonode</button></a>
+<a href="${nodo.geonetwork}"><button type="button" id="btnDatos">Geonetwork</button></a>
 </div>
 </div>
 `;
@@ -138,42 +151,42 @@ const points = [
   {
     lat: -34.5419214203672,
     lng: -58.4426215946441,
-    text: `${createBodyPopup(listInst.IAFE.titulo, listInst.IAFE.imagen)}`,
+    text: `${createBodyPopup(listInst.IAFE)}`,
   },
   {
     lat: -38.0313568540783,
     lng: -57.5322375431191,
-    text: `${createBodyPopup(listInst.INIDEP.titulo, listInst.INIDEP.imagen)}`,
+    text: `${createBodyPopup(listInst.INIDEP)}`,
   },
   {
     lat: -38.6658512007599,
     lng: -62.2343722737833,
-    text: `${createBodyPopup(listInst.CIMAS.titulo, listInst.CIMAS.imagen)}`,
+    text: `${createBodyPopup(listInst.CIMAS)}`,
   },
   {
     lat: -42.6627066637157,
     lng: -65.004170827596,
-    text: `${createBodyPopup(listInst.CESIMAR.titulo, listInst.CESIMAR.imagen)}`,
+    text: `${createBodyPopup(listInst.CESIMAR)}`,
   },
   {
     lat: -45.8254438633127,
     lng: -67.4633783451962,
-    text: `${createBodyPopup(listInst.IIDEPYS.titulo, listInst.IIDEPYS.imagen)}`,
+    text: `${createBodyPopup(listInst.IIDEPYS)}`,
   },
   {
     lat: -51.5330642603803,
     lng: -69.248236391595,
-    text: `${createBodyPopup(listInst.CITSC.titulo, listInst.CITSC.imagen)}`,
+    text: `${createBodyPopup(listInst.CITSC)}`,
   },
   {
     lat: -54.7426387444932,
     lng: -68.3616337812203,
-    text: `${createBodyPopup(listInst.CADIC.titulo, listInst.CADIC.imagen)}`,
+    text: `${createBodyPopup(listInst.CADIC)}`,
   },
   {
     lat: -62.2377201064155,
     lng: -58.6670725759177,
-    text: `${createBodyPopup(listInst.CARLINI.titulo, listInst.CARLINI.imagen)}`,
+    text: `${createBodyPopup(listInst.CARLINI)}`,
   },
 ];
 
