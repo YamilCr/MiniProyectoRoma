@@ -141,8 +141,8 @@ ${nodo.descripcion}<br>
 </p>
 <div class="contendorBotonesPopup">
 <a href="${nodo.web}"><button type="button" id="btnVer">Web</button></a>
-<a href="${nodo.geonode}"><button type="button" id="btnMapas">Geonode</button></a>
-<a href="${nodo.geonetwork}"><button type="button" id="btnDatos">Geonetwork</button></a>
+<a href="${nodo.geonode}"><button type="button" id="btnMapas">Visualizaciones</button></a>
+<a href="${nodo.geonetwork}"><button type="button" id="btnDatos">Datos Históricos</button></a>
 </div>
 </div>
 `;
