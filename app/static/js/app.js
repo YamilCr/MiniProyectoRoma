@@ -271,3 +271,4 @@ function removeAllAnimationClassFromMap() {
   // back to default position
   map.setView([lat, lng], zoom);
 }
+// hola
