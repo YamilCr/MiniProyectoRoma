@@ -179,8 +179,8 @@ const points = [
     text: `${createBodyPopup(listInst.CITSC)}`,
   },
   {
-    lat: -54.7426387444932,
-    lng: -68.3616337812203,
+    lat: -54.8633945825929,
+    lng: -68.4831405552123,
     text: `${createBodyPopup(listInst.CADIC)}`,
   },
   {
