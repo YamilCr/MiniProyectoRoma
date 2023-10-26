@@ -13,7 +13,7 @@ const listInst = {
   IAFE: {
     titulo: 'IAFE',
     imagen:
-      "https://lh3.googleusercontent.com/proxy/XzBXfZtFqgm2q5UA2yAk9xINnxwe6XVsZpyjJx7AiyXykpfBSiaGk331uWrzQ-djjjtcR6upTQH9IF5k6OukJFeuEOJLPf2CwWgIRBvFJlW25uKm54idfgF3dF32hm-8QkcQ33_G3c_RGkLR=s0-d",
+      "IAFE.jpg",
     descripcion: "description...",
     direccion: "...",
     localidad: "...",
@@ -25,7 +25,7 @@ const listInst = {
   INIDEP: {
     titulo: 'INIDEP',
     imagen:
-      "https://jornadasdelmar2018.exactas.uba.ar/wp-content/uploads/2017/06/logo-inidep-completo-300x300.jpg",
+      "INIDEP.jpg",
     descripcion: "Instituto Nacional de Investigación y Desarrollo Pesquero. Asesoramos en el uso racional de los recursos sostenibles con el objetivo de preservar el ecosistema marino para las generaciones futuras.",
     direccion: "Paseo Victoria Ocampo Nº1, Escollera Norte",
     localidad: "Mar del Plata",
@@ -37,7 +37,7 @@ const listInst = {
   CIMAS: {
     titulo: 'CIMAS',
     imagen:
-      "https://cimas.conicet.gov.ar/wp-content/uploads/sites/195/2023/03/CIMAS-CONICET-COMAHUE-web.png",
+      "CIMAS.png",
     descripcion: "description...",
     direccion: "...",
     localidad: "...",
@@ -49,7 +49,7 @@ const listInst = {
   CESIMAR: {
     titulo: 'CESIMAR',
     imagen:
-      "https://cenpat.conicet.gov.ar/wp-content/uploads/sites/91/2021/01/logoCENPAT.png",
+      "CESIMAR.png",
     descripcion: "description...",
     direccion: "...",
     localidad: "...",
@@ -61,7 +61,7 @@ const listInst = {
   IIDEPYS: {
     titulo: 'IIDEPyS',
     imagen:
-      "https://lh3.googleusercontent.com/proxy/XzBXfZtFqgm2q5UA2yAk9xINnxwe6XVsZpyjJx7AiyXykpfBSiaGk331uWrzQ-djjjtcR6upTQH9IF5k6OukJFeuEOJLPf2CwWgIRBvFJlW25uKm54idfgF3dF32hm-8QkcQ33_G3c_RGkLR=s0-d",
+      'IIDEP1.png',
     descripcion: "description...",
     direccion: "...",
     localidad: "...",
@@ -73,7 +73,7 @@ const listInst = {
   CITSC: {
     titulo: 'CIT - Santa Cruz',
     imagen:
-      "https://www.unpa.edu.ar/sites/default/files/pagina_adjuntos/logo.png",
+      "CITSC.png",
     descripcion: "description...",
     direccion: "...",
     localidad: "...",
@@ -85,7 +85,7 @@ const listInst = {
   CADIC: {
     titulo: 'CADIC',
     imagen:
-      "https://cadic.conicet.gov.ar/wp-content/uploads/sites/19/2017/09/cadic_logo.png",
+      "CADIC.png",
     descripcion: "Centro Austral de Investigaciones Científicas del Consejo Nacional de Investigaciones Científicas y Técnicas.",
     direccion: "Bernardo Houssay 200",
     localidad: "Ushuaia",
@@ -97,7 +97,7 @@ const listInst = {
   CARLINI: {
     titulo: 'IAA BASE CARLINI',
     imagen:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwJWsPxUNt3hZl88XsD-bNZAhmYq3kb8fvqg&usqp=CAU",
+      "CARLINI.jpeg",
     descripcion: "El Instituto Antártico Argentino (IAA) es un organismo científico tecnológico, orientado bajo normas políticas del Estado nacional. Fue creado el 17 de abril de 1951 por el Decreto del Poder Ejecutivo Nacional Nº 7338. Su fundador y primer director fue el entonces Coronel Hernán Pujato. Es integrante activo del Sistema Nacional de Ciencia y Tecnología del Estado Argentino, y es pionero a nivel internacional en el desarrollo de investigación antártica.",
     direccion: "25 de mayo 1143",
     localidad: "San Martín",
@@ -127,7 +127,7 @@ const createBodyPopup = (nodo) => {
   return `<div class="bodyPopup">
 <h1 class="tituloPopup">${nodo.titulo}</h1>
 <div class="contenedorImagenPopup">
-    <img src="${nodo.imagen}" alt="" class="imagePopup">
+    <img src="http://127.0.0.1:5000/static/img/${nodo.imagen}" alt="" class="imagePopup">
 </div>
 <p class="informacionPopup">
 <br><b>Descripción</b><br>
@@ -141,8 +141,8 @@ ${nodo.descripcion}<br>
 </p>
 <div class="contendorBotonesPopup">
 <a href="${nodo.web}"><button type="button" id="btnVer">Web</button></a>
-<a href="${nodo.geonode}"><button type="button" id="btnMapas">Geonode</button></a>
-<a href="${nodo.geonetwork}"><button type="button" id="btnDatos">Geonetwork</button></a>
+<a href="${nodo.geonode}"><button type="button" id="btnMapas">Visualizaciones</button></a>
+<a href="${nodo.geonetwork}"><button type="button" id="btnDatos">Datos Históricos</button></a>
 </div>
 </div>
 `;
@@ -179,8 +179,8 @@ const points = [
     text: `${createBodyPopup(listInst.CITSC)}`,
   },
   {
-    lat: -54.7426387444932,
-    lng: -68.3616337812203,
+    lat: -54.8633945825929,
+    lng: -68.4831405552123,
     text: `${createBodyPopup(listInst.CADIC)}`,
   },
   {
@@ -271,3 +271,4 @@ function removeAllAnimationClassFromMap() {
   // back to default position
   map.setView([lat, lng], zoom);
 }
+// hola
