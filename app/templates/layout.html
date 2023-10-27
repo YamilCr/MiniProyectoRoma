@@ -8,13 +8,14 @@
     <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
-  />
-    <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+    />
+  <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
     <title>{% block title%}{% endblock %}</title>
 </head>
 <body>
     {% block body%}
     {% endblock %}
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+   
 </body>
 </html>

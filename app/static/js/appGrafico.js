@@ -101,52 +101,133 @@ Highcharts.chart("container", {
   },
 });
 var objDatos = [];
+var map = new Map();
+// fetch(
+//   "http://roma-geonetwork.iado-conicet.gob.ar/geonetwork/srv/api/records/6f3c176f-00bf-494a-8a1d-1c2da32f7292/attachments/10-2023.txt"
+// )
+//   .then((res) => res.text())
+//   .then((content) => {
+//     let lines = content.split(/\n/);
+//     // console.log(lines);
+//     lines.forEach(line => {
+//         const claves = line.split(/\t/);
+//         let newObj = {
+//           FechaYhora: claves[0] + claves[1],
+//           Conductividad: claves[2],
+//           TemperaturaUno: claves[3],
+//           NivelAgua: claves[4],
+//           ConcentraciónSS: claves[5],
+//           ConcentracionDeClorofila: claves[6],
+//           Radiación: claves[7],
+//           Temperaturados: claves[8],
+//           DirecciónDelViento: claves[9],
+//           VelocidadDelViento: claves[10],
+//         };
 
-fetch(
-  "http://roma-geonetwork.iado-conicet.gob.ar/geonetwork/srv/api/records/6f3c176f-00bf-494a-8a1d-1c2da32f7292/attachments/10-2023.txt"
-)
-  .then((res) => res.text())
-  .then((content) => {
-    let lines = content.split(/\n/);
+//         objDatos.push(newObj);
+
+//     });
+//     console.log(objDatos);
+//   });
+
+function leerArchivo(e) {
+  var archivo = e.target.files[0];
+  if (!archivo) {
+    return;
+  }
+  var lector = new FileReader();
+  lector.onload = function (e) {
+    var contenido = e.target.result;
+    let lines = contenido.split(/\n/);
     // console.log(lines);
-    lines.forEach(line => {
-        const claves = line.split(/\t/);
-        let newObj = {
-          FechaYhora: claves[0] + claves[1],
-          Conductividad: claves[2],
-          TemperaturaUno: claves[3],
-          NivelAgua: claves[4],
-          ConcentraciónSS: claves[5],
-          ConcentracionDeClorofila: claves[6],
-          Radiación: claves[7],
-          Temperaturados: claves[8],
-          DirecciónDelViento: claves[9],
-          VelocidadDelViento: claves[10],
-        };
-  
-        objDatos.push(newObj);
-        
+    lines.forEach((line) => {
+      const claves = line.split(/\t/);
+
+      let newObj = {
+        FechaYhora: String(claves[0]).substring(0,8),
+        Conductividad: claves[2],
+        TemperaturaUno:parseFloat( claves[3]),
+        NivelAgua: claves[4],
+        ConcentraciónSS: claves[5],
+        ConcentracionDeClorofila: claves[6],
+        Radiación: claves[7],
+        Temperaturados: claves[8],
+        DirecciónDelViento: claves[9],
+        VelocidadDelViento: claves[10],
+      };
+
+      objDatos.push(newObj);
     });
-    console.log(objDatos);
+    mostrarContenido(contenido);
+    map =  objDatos.reduce((map, item) => map.set(item.FechaYhora, item.TemperaturaUno), new Map());
+    
+ };
+  lector.readAsText(archivo);
+}
+
+function mostrarContenido(contenido) {
+  var elemento = document.getElementById("contenido-archivo");
+  elemento.innerHTML = contenido;
+  actualizarGrafico();
+}
+
+document
+  .getElementById("file-input")
+  .addEventListener("change", leerArchivo, false);
+
+function actualizarGrafico() {
+  
+  Highcharts.chart("container", {
+    title: {
+      text: "Temperatura",
+      align: "left",
+    },
+  
+  
+    yAxis: {
+      title: {
+        text: "Temperatura",
+      },
+    },
+  
+    xAxis: {
+      accessibility: {
+        rangeDescription: "Range: 2010 to 2024",
+      },
+    },
+  
+    legend: {
+      layout: "vertical",
+      align: "right",
+      verticalAlign: "middle",
+    },
+  
+    plotOptions: {
+      series: {
+        label: {
+          connectorAllowed: false,
+        },
+        pointStart: 2022,
+      },
+    },
+  
+    series: map,
+  
+    responsive: {
+      rules: [
+        {
+          condition: {
+            maxWidth: 500,
+          },
+          chartOptions: {
+            legend: {
+              layout: "horizontal",
+              align: "center",
+              verticalAlign: "bottom",
+            },
+          },
+        },
+      ],
+    },
   });
-
-// function leerArchivo(e) {
-//     var archivo = e.target.files[0];
-//     if (!archivo) {
-//       return;
-//     }
-//     var lector = new FileReader();
-//     lector.onload = function(e) {
-//       var contenido = e.target.result;
-//       mostrarContenido(contenido);
-//     };
-//     lector.readAsText(archivo);
-//   }
-
-//   function mostrarContenido(contenido) {
-//     var elemento = document.getElementById('contenido-archivo');
-//     elemento.innerHTML = contenido;
-//   }
-
-//   document.getElementById('file-input')
-//     .addEventListener('change', leerArchivo, false);
+}
