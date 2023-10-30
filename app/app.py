@@ -5,6 +5,8 @@ app = Flask(__name__)
 def index():
     titulo = 'ROMA Nodos'
     return render_template('index.html', data=titulo)
+
+
 @app.route('/grafico')
 def grafico():
     titulo = 'Prueba'

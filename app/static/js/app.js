@@ -33,6 +33,18 @@ const listInst = {
     geonode: "",
     geonetwork: "",
   },
+  IADO: {
+    titulo: "IADO",
+    imagen: "IADO.jpg",
+    descripcion:
+      "Instituto Argentino de Oceanografía.",
+    direccion: "FLorida 800",
+    localidad: "Bahia Blanca",
+    provincia: "Pcia de Buenos Aires",
+    web: "https://iado.conicet.gov.ar/",
+    geonode: "",
+    geonetwork: "",
+  },
   CIMAS: {
     titulo: "CIMAS",
     imagen: "CIMAS.png",
@@ -57,7 +69,7 @@ const listInst = {
   },
   IIDEPYS: {
     titulo: "IIDEPyS",
-    imagen: "IIDEP1.png",
+    imagen: "IIDEPYS.png",
     descripcion: "description...",
     direccion: "...",
     localidad: "...",
@@ -157,8 +169,8 @@ ${nodo.descripcion}<br>
 };
 const points = [
   {
-    lat: -34.5419214203672,
-    lng: -58.4426215946441,
+    lat: -34.5608847,
+    lng: -58.398997,
     text: `${createBodyPopup(listInst.IAFE)}`,
   },
   {
@@ -167,33 +179,38 @@ const points = [
     text: `${createBodyPopup(listInst.INIDEP)}`,
   },
   {
-    lat: -38.6658512007599,
-    lng: -62.2343722737833,
+    lat: -39.1477229,
+    lng: -61.7234479,
+    text: `${createBodyPopup(listInst.IADO)}`,
+  },
+  {
+    lat: -41.697547101624025, 
+    lng: -65.00690462220645,
     text: `${createBodyPopup(listInst.CIMAS)}`,
   },
   {
-    lat: -42.6627066637157,
-    lng: -65.004170827596,
+    lat: -42.73530287828471, 
+    lng: -65.01912318222848,
     text: `${createBodyPopup(listInst.CESIMAR)}`,
   },
   {
-    lat: -45.8254438633127,
-    lng: -67.4633783451962,
+    lat: -45.748891826180454, 
+    lng: -67.36826705128189,
     text: `${createBodyPopup(listInst.IIDEPYS)}`,
   },
   {
-    lat: -51.5330642603803,
-    lng: -69.248236391595,
+    lat: -51.61110815930979, 
+    lng: -69.21991599498516,
     text: `${createBodyPopup(listInst.CITSC)}`,
   },
   {
-    lat: -54.8633945825929,
-    lng: -68.4831405552123,
+    lat: -54.8623557850555, 
+    lng: -68.48162250527832,
     text: `${createBodyPopup(listInst.CADIC)}`,
   },
   {
-    lat: -62.2377201064155,
-    lng: -58.6670725759177,
+    lat: -62.23777004636486, 
+    lng: -58.66825021710155,
     text: `${createBodyPopup(listInst.CARLINI)}`,
   },
 ];
@@ -231,11 +248,6 @@ map.on("popupopen", function (e) {
       text: "Temperatura",
       align: "center",
     },
-
-    // subtitle: {
-    //   text: 'By Job Category. Source: <a href="https://irecusa.org/programs/solar-jobs-census/" target="_blank">IREC</a>.',
-    //   align: "left",
-    // },
 
     yAxis: {
       title: {
